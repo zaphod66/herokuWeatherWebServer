@@ -18,8 +18,9 @@ const weather = (lat, lon, cb) => {
             const windSpd   = body.current.wind_speed
             const windDir   = body.current.wind_dir
             const windDeg   = body.current.wind_degree
+            const icons     = body.current.weather_icons
 
-            const data = { name, desc, temp, feelslike, humidity, windSpd, windDir, windDeg }
+            const data = { name, desc, temp, feelslike, humidity, windSpd, windDir, windDeg, icons }
 
             cb(undefined, data)
         }

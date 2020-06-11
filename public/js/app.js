@@ -3,6 +3,7 @@ const search      = document.querySelector('input')
 const msg1        = document.querySelector('#msg-1')
 const msg2        = document.querySelector('#msg-2')
 const msg3        = document.querySelector('#msg-3')
+const icon        = document.querySelector('#weather-icon')
 
 weatherForm.addEventListener('submit', (event) => {
     event.preventDefault()
@@ -10,7 +11,8 @@ weatherForm.addEventListener('submit', (event) => {
     msg1.textContent = "loading..."
     msg2.textContent = ""
     msg3.textContent = ""
-    
+    icon.setAttribute('style', 'display:none')
+
     const location = search.value
 
     const url = '/weather?address=' + location
@@ -27,6 +29,8 @@ weatherForm.addEventListener('submit', (event) => {
                 msg1.textContent = text1
                 msg2.textContent = text2
                 msg3.textContent = text3
+                icon.removeAttribute('style')
+                icon.src = data.data.icons[0]
             }
         })
     })
